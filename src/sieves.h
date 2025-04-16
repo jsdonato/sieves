@@ -1,3 +1,3 @@
 #include <stdlib.h>
 
-void eratosthenes(int* res, int len, int n);
+void eratosthenes(int* res, int* len, int n);
