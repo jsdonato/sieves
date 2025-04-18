@@ -15,6 +15,7 @@ if [[ -z "${PREFIX}" ]]; then
 	echo "Error: PREFIX not defined"
 	exit 1
 else
+        > ${PWD}/.cache
 	echo ${PREFIX} >> ${PWD}/.cache
         unset -v PREFIX
 fi

@@ -1,42 +1,25 @@
+#include <assert.h>
+#include <math.h>
+#include <stdio.h>
 #include "sieves.h"
 
-void eratosthenes(int* res, int* len, int n) {
-  int* integers = (int*)malloc(n * sizeof(int));
-  int* mark = (int*)malloc(n * sizeof(int));
+void eratosthenes(int** res, int* len, int n) {
+  assert(n >= 2);
+  int* keep = (int*)malloc(n * sizeof(int));
 
-  int p;
-  int i;
-  int num;
-
-  // initialize buffer of integers in [0,n)
-  integers[0] = 0;
-  for (i = 1; i < n; ++i) {
-    integers[i] = integers[i - 1] + 1;
+  // makr everything as kept
+  for (int i = 0; i < n; ++i) {
+    keep[i] = 1;
   }
 
-  // mark everything in the list
-  for (i = 0; i < n; ++i) {
-    mark[i] = 1;
-  }
-
-  // procedure to mark primes as those we
-  // want to keep
-  p = 2;
-  int found = 1;
-  while (found == 1) {
-    i = 2;
-    while (num < n) {
-      num = i * p;
-      mark[num] = 0;
-      ++i;
-    }
-
-    found = 0;
-    for (i = p + 1; i < num; ++i) {
-      if (mark[i] == 1) {
-        found = 1;
-        p = i;
-        break;
+  // procedure to keep primes
+  const int end = (int)sqrt(n);
+  for (int i = 2; i <= end; ++i) {
+    if (keep[i] == 1) {
+      int num = i * i;
+      while (num < n) {
+        keep[num] = 0;
+        num += i;
       }
     }
   }
@@ -44,21 +27,21 @@ void eratosthenes(int* res, int* len, int n) {
   // now compress
   // first find size of list to return
   *len = 0;
-  for (i = 2; i < num; ++i) {
-    (*len) += mark[i];
+  for (int i = 2; i < n; ++i) {
+    (*len) += keep[i];
   }
+  fprintf(stderr, "HERE : %d\n", *len);
 
   // allocate memory to res
   // and put primes in it
-  res = malloc((*len) * sizeof(int));
-  p = 0;
-  for (int i = 2; i < num; ++i) {
-    if (mark[i] == 1) {
-      res[p] = i;
+  *res = malloc((*len) * sizeof(int));
+  int p = 0;
+  for (int i = 2; i < n; ++i) {
+    if (keep[i] == 1) {
+      (*res)[p] = i;
       ++p;
     }
   }
 
-  free(integers);
-  free(mark);
+  free(keep);
 }

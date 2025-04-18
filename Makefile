@@ -27,7 +27,6 @@ test:
 
 clean:
 	rm -f *.o
-	rm -rf $(PREFIX)/include
-	rm -rf $(PREFIX)/lib
-	rm -rf $(PREFIX)/test
-	> $(ROOT)/.cache
+	rm -r $(PREFIX)/include
+	rm -r $(PREFIX)/lib
+	rm -r $(PREFIX)/test
