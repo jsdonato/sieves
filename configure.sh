@@ -15,7 +15,13 @@ if [[ -z "${PREFIX}" ]]; then
 	echo "Error: PREFIX not defined"
 	exit 1
 else
-        > ${PWD}/.cache
-	echo ${PREFIX} >> ${PWD}/.cache
+        if [ ! -d ${PREFIX} ]; then
+                mkdir ${PREFIX}
+        fi
+        if [ ! -f ${PWD}/build_cache ]; then
+                touch ${PWD}/build_cache
+        fi
+        > ${PWD}/build_cache
+	echo ${PREFIX} >> ${PWD}/build_cache
         unset -v PREFIX
 fi

@@ -6,7 +6,7 @@ SRCS = $(wildcard src/*.c)
 DEPS = $(wildcard src/*.h)
 OBJS = $(patsubst src/%.c, %.o, $(SRCS))
 
-PREFIX=$(shell sed -n '1p' $(ROOT)/.cache)
+PREFIX=$(shell sed -n '1p' $(ROOT)/build_cache)
 
 %.o: src/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
