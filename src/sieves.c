@@ -11,7 +11,7 @@ void eratosthenes(int* res, int* len, int n) {
   // initialize buffer of integers in [0,n)
   integers[0] = 0;
   for (i = 1; i < n; ++i) {
-    integers[i] = inters[i - 1] + 1;
+    integers[i] = integers[i - 1] + 1;
   }
 
   // mark everything in the list
@@ -50,7 +50,7 @@ void eratosthenes(int* res, int* len, int n) {
 
   // allocate memory to res
   // and put primes in it
-  res = malloc(len * sizeof(int));
+  res = malloc((*len) * sizeof(int));
   p = 0;
   for (int i = 2; i < num; ++i) {
     if (mark[i] == 1) {
