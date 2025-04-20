@@ -30,7 +30,6 @@ void eratosthenes(int** res, int* len, int n) {
   for (int i = 2; i < n; ++i) {
     (*len) += keep[i];
   }
-  fprintf(stderr, "HERE : %d\n", *len);
 
   // allocate memory to res
   // and put primes in it
