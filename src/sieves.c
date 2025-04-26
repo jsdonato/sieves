@@ -7,7 +7,7 @@ void eratosthenes(int** res, int* len, int n) {
   assert(n > 2);
   int* keep = (int*)malloc(n * sizeof(int));
 
-  // makr everything as kept
+  // mark everything as kept
   for (int i = 0; i < n; ++i) {
     keep[i] = 1;
   }
@@ -47,5 +47,6 @@ void eratosthenes(int** res, int* len, int n) {
 
 void sundaram(int** res, int* len, int n) {
   assert(n > 2);
-  
+
+
 }
