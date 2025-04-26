@@ -16,5 +16,12 @@ void test_eratosthenes() {
 
   free(res);
 
+  eratosthenes(&res, &len, 3);
+
+  assert(len == 1);
+  assert(res[0] == 2);
+
+  free(res);
+
   printf("=== END TEST ERATOSTHENES ===\n");
 }

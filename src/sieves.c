@@ -4,7 +4,7 @@
 #include "sieves.h"
 
 void eratosthenes(int** res, int* len, int n) {
-  assert(n >= 2);
+  assert(n > 2);
   int* keep = (int*)malloc(n * sizeof(int));
 
   // makr everything as kept
@@ -43,4 +43,9 @@ void eratosthenes(int** res, int* len, int n) {
   }
 
   free(keep);
+}
+
+void sundaram(int** res, int* len, int n) {
+  assert(n > 2);
+  
 }
