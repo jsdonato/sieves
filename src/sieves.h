@@ -20,4 +20,5 @@ void eratosthenes(int** res, int* len, int n);
  * @param[out] len Length of the return list res.
  */
 void sundaram(int** res, int* len, int n);
+
 #endif
