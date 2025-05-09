@@ -47,31 +47,36 @@ void eratosthenes(int** res, int* len, int n) {
 
 void sundaram(int** res, int* len, int n) {
   assert(n > 2);
-  int k = 
-  int* keep = (int*)malloc(k * sizeof(int));
+  const int m = n / 2;
+  int* keep = (int*)malloc(m * sizeof(int));
 
   // mark everything as kept
-  for (int i = 0; i < k; ++i) {
+  for (int i = 0; i < m; ++i) {
     keep[i] = 1;
   }
 
-  // TODO: procedure to keep primes
-
+  // procedure to keep primes
+  for (int i = 1; i < m; ++i) {
+    for (int j = (2 * i * i + 2 * i); j < m; j += 2 * i + 1) {
+      keep[j] = 0;
+    }
+  }
 
   // now compress
-  // first find size of list to return
-  *len = 0;
-  for (int i = 2; i < k; ++i) {
+  // first find size of the list to return
+  *len = 1;
+  for (int i = 1; i < m; ++i) {
     (*len) += keep[i];
   }
 
   // allocate memory to res
   // and put primes in it
   *res = malloc((*len) * sizeof(int));
-  int p = 0;
-  for (int i = 2; i < k; ++i) {
+  int p = 1;
+  (*res)[0] = 2;
+  for (int i = 1; i < m; ++i) {
     if (keep[i] == 1) {
-      (*res)[p] = i;
+      (*res)[p] = 2 * i + 1;
       ++p;
     }
   }

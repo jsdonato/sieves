@@ -7,5 +7,6 @@
 
 
 void test_eratosthenes();
+void test_sundaram();
 
 #endif
