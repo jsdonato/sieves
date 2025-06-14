@@ -12,8 +12,8 @@ PREFIX=$(shell sed -n '1p' $(ROOT)/build_cache)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 libsieves.a: $(OBJS)
-	mkdir $(PREFIX)/lib
-	mkdir $(PREFIX)/include
+	mkdir -p $(PREFIX)/lib
+	mkdir -p $(PREFIX)/include
 	ar rcs libsieves.a $(OBJS)
 	mv libsieves.a $(PREFIX)/lib
 	cp $(ROOT)/src/*.h $(PREFIX)/include
